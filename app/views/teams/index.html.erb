@@ -1,0 +1,7 @@
+<h1>Teams</h1>
+
+<h4>Number of teams: <%= @teams.length %></h4>
+
+<% @teams.each do |team| %>
+  <pre><%= JSON.pretty_generate(JSON.parse(team.to_json)) %></pre>
+<% end %>
