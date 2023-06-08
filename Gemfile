@@ -6,6 +6,7 @@ ruby "3.1.2"
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rest-client', '~> 2.1'
 gem 'json'
+gem 'annotate'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
