@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_16_030405) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_08_021814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,34 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_030405) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "players", force: :cascade do |t|
+    t.string "nhl_id"
+    t.string "status"
+    t.string "full_name"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "abbr_name"
+    t.integer "height"
+    t.integer "weight"
+    t.string "handedness"
+    t.string "position"
+    t.string "primary_position"
+    t.integer "jersey_number"
+    t.string "college"
+    t.integer "experience"
+    t.string "birth_place"
+    t.date "birthdate"
+    t.integer "rookie_year"
+    t.string "draft_team_id"
+    t.integer "draft_year"
+    t.integer "draft_round"
+    t.integer "draft_pick"
+    t.bigint "team_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_players_on_team_id"
+  end
+
   create_table "teams", force: :cascade do |t|
     t.string "nhl_id"
     t.string "name"
@@ -29,4 +57,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_16_030405) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "players", "teams"
 end

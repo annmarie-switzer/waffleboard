@@ -1,0 +1,49 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nhl_id: MyString
+  status: MyString
+  full_name: MyString
+  first_name: MyString
+  last_name: MyString
+  abbr_name: MyString
+  height: 1
+  weight: 1
+  handedness: MyString
+  position: MyString
+  primary_position: MyString
+  jersey_number: 1
+  college: MyString
+  experience: 1
+  birth_place: MyString
+  birthdate: 2023-06-07
+  rookie_year: 1
+  draft_team_id: MyString
+  draft_year: 1
+  draft_round: 1
+  draft_pick: 1
+  team: one
+
+two:
+  nhl_id: MyString
+  status: MyString
+  full_name: MyString
+  first_name: MyString
+  last_name: MyString
+  abbr_name: MyString
+  height: 1
+  weight: 1
+  handedness: MyString
+  position: MyString
+  primary_position: MyString
+  jersey_number: 1
+  college: MyString
+  experience: 1
+  birth_place: MyString
+  birthdate: 2023-06-07
+  rookie_year: 1
+  draft_team_id: MyString
+  draft_year: 1
+  draft_round: 1
+  draft_pick: 1
+  team: two
