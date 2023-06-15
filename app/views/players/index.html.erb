@@ -1,0 +1,9 @@
+<%= link_to 'Back to team list', teams_path %>
+
+<h1>Players for the <%= @team.market %> <%= @team.name %></h1>
+
+<h4>Number of players: <%= @team.players.length %></h4>
+
+<% @team.players.each do |player| %>
+  <pre><%= JSON.pretty_generate(JSON.parse(player.to_json)) %></pre>
+<% end %>

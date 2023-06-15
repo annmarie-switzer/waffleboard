@@ -4,4 +4,5 @@
 
 <% @teams.each do |team| %>
   <pre><%= JSON.pretty_generate(JSON.parse(team.to_json)) %></pre>
+  <%= link_to 'View Players', team_players_path(team) %>
 <% end %>
