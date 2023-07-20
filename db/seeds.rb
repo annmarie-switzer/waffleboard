@@ -51,5 +51,25 @@ def seed_players
   players.each(&:save!)
 end
 
+def seed_games
+  file_path = Rails.root.join('db', 'data/schedule.json')
+  file_contents = File.read(file_path)
+  file_data = JSON.parse(file_contents)
+  games = file_data['games']
+
+  games.each do |game|
+    Game.find_or_create_by(
+      uuid: game['id'],
+      status: game['status'],
+      scheduled: game['scheduled'],
+      home_points: game['home_points'],
+      away_points: game['away_points'],
+      home_team_id: Team.where(nhl_id: game['home']['id']).pluck(:id).first,
+      away_team_id: Team.where(nhl_id: game['away']['id']).pluck(:id).first
+    )
+  end
+end
+
 # seed_teams
 # seed_players
+seed_games
