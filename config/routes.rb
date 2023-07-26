@@ -1,10 +1,7 @@
 Rails.application.routes.draw do
-  root 'teams#index'
-
-  resources :teams do
-    resources :players
+  resources :teams, only: %i[index show] do
+    resources :players, only: %i[index show], controller: 'teams/players'
   end
 
-  resources :teams
-  resources :games
+  resources :games, only: %i[index show]
 end
