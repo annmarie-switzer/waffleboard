@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'teams#index'
+
   resources :teams, only: %i[index show] do
     resources :players, only: %i[index show], to: 'teams#players'
   end
