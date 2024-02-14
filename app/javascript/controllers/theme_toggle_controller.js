@@ -22,7 +22,9 @@ export default class extends Controller {
     document.body.setAttribute('data-theme', this.themeValue);
 
     const iconSrc =
-      this.themeValue === 'light' ? 'light-icon.png' : 'dark-icon.png';
+      this.themeValue === 'light'
+        ? '/assets/sun.svg'
+        : '/assets/moon.svg';
 
     this.iconTarget.src = iconSrc;
   }
