@@ -8,9 +8,8 @@ class GamesController < ApplicationController
   end
 
   def players
-    game = Game.find(params[:id])
-    home_players = game.home_team.players
-    away_players = game.away_team.players
-    render json: { home: home_players, away: away_players }
+    @game = Game.find(params[:id])
+    @home_players = @game.home_team.players
+    @away_players = @game.away_team.players
   end
 end

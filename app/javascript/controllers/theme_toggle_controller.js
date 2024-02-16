@@ -7,25 +7,19 @@ export default class extends Controller {
     theme: String
   };
 
-  connect() {
+  initialize() {
     this.themeValue = localStorage.getItem('theme') || 'dark';
-    this.changeTheme();
   }
 
   toggle() {
     this.themeValue = this.themeValue === 'light' ? 'dark' : 'light';
     localStorage.setItem('theme', this.themeValue);
-    this.changeTheme();
   }
 
-  changeTheme() {
-    document.body.setAttribute('data-theme', this.themeValue);
+  themeValueChanged(curr, prev) {
+    document.body.setAttribute('data-theme', curr);
 
-    const iconSrc =
-      this.themeValue === 'light'
-        ? '/assets/sun.svg'
-        : '/assets/moon.svg';
-
-    this.iconTarget.src = iconSrc;
+    this.iconTarget.src =
+      curr === 'light' ? '/assets/moon.svg' : '/assets/sun.svg';
   }
 }

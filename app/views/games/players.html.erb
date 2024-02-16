@@ -1,0 +1,12 @@
+<%= link_to 'Back to game', game_path %>
+
+<h1>Players for the <%= @game.id %></h1>
+
+<h5>Home players</h5>
+<% @home_players.each do |player| %>
+  <pre><%= JSON.pretty_generate(JSON.parse(player.to_json)) %></pre>
+<% end %>
+<h5>Away players</h5>
+<% @away_players.each do |player| %>
+  <pre><%= JSON.pretty_generate(JSON.parse(player.to_json)) %></pre>
+<% end %>

@@ -1,0 +1,9 @@
+<%= link_to 'Back to team list', teams_path %>
+
+<h1>Games</h1>
+
+<h4>Number of games: <%= @games.length %></h4>
+
+<% @games.each do |game| %>
+  <pre><%= JSON.pretty_generate(JSON.parse(game.to_json)) %></pre>
+<% end %>
