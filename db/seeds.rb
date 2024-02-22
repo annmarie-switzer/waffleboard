@@ -70,6 +70,18 @@ def seed_games
   end
 end
 
+def seed_logos
+  file_path = Rails.root.join('db', 'data/team_logos.json')
+  file_contents = File.read(file_path)
+  teams = JSON.parse(file_contents)
+
+  teams.each do |name, logo|
+    team = Team.find_by(name: name)
+    team.update(logo: logo) if team
+  end
+end
+
 # seed_teams
 # seed_players
-seed_games
+# seed_games
+seed_logos

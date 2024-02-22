@@ -26,7 +26,8 @@ body {
 
 h1,
 h2,
-h4 {
+h4,
+p {
   margin: 0;
   padding: 0;
 }
@@ -49,4 +50,23 @@ h4 {
   flex-direction: column;
   gap: 8px;
   height: 150px;
+}
+
+.matchup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: solid blue;
+}
+
+.matchup > div {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  border: solid red;
+}
+
+.matchup img {
+  height: 60px;
 }
