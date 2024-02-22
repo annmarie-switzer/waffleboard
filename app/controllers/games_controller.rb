@@ -1,15 +1,12 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @games = Game
+            .includes(:home_team, :away_team)
+            .where(scheduled: (1.year + 4.months).ago.all_day)
+            .order(scheduled: :asc)
   end
 
   def show
     @game = Game.find(params[:id])
-  end
-
-  def players
-    @game = Game.find(params[:id])
-    @home_players = @game.home_team.players
-    @away_players = @game.away_team.players
   end
 end

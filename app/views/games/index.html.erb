@@ -1,5 +1,28 @@
-<h1>Games</h1>
+<div class="page">
+  <h1>Today's Games</h1>
 
-<% @games.each do |game| %>
-  <pre><%= JSON.pretty_generate(JSON.parse(game.to_json)) %></pre>
-<% end %>
+  <h4>Number of games: <%= @games.length %></h4>
+
+  <div class="card-container">
+    <% @games.each do |game| %>
+      <div class="card">
+        <h2>
+          <%=
+            link_to "#{game.away_team.market} #{game.away_team.name}",
+                    players_team_path(game.away_team),
+                    target: '_blank'
+          %>
+          @
+          <%=
+            link_to "#{game.home_team.market} #{game.home_team.name}",
+                    players_team_path(game.home_team),
+                    target: '_blank'
+          %>
+        </h2>
+        <p>
+          <%= game.scheduled.strftime('%I:%M %p') %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>
