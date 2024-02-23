@@ -3,36 +3,40 @@
 
   <h4>Number of games: <%= @games.length %></h4>
 
-  <div class="card-container">
-    <% @games.each do |game| %>
-      <div class="card">
-        <div class="matchup">
-          <div>
-            <img src="<%= game.away_team.logo %>" />
-            <%=
-              link_to "#{game.away_team.market} #{game.away_team.name}",
-                      players_team_path(game.away_team),
-                      target: '_blank'
-            %>
-          </div>
+  <% @games.each do |id, data| %>
+    <% away = data[:away] %>
+    <% home = data[:home] %>
 
-          <div>@</div>
-
-          <div>
-            <img src="<%= game.home_team.logo %>" />
-            <%=
-              link_to "#{game.home_team.market} #{game.home_team.name}",
-                      players_team_path(game.home_team),
-                      target: '_blank'
-            %>
-          </div>
-        </div>
-
-        <%# START TIME %>
-        <p>
-          <%= game.scheduled.strftime('%I:%M %p') %>
-        </p>
+    <div class="game-row">
+      <div class="matchup">
+        <img src="<%= away[:team].logo %>" />
+        <%=
+          link_to "#{away[:team].market} #{away[:team].name}",
+                  players_team_path(away[:team]),
+                  target: '_blank'
+        %>
+        <span>@</span>
+        <img src="<%= home[:team].logo %>" />
+        <%=
+          link_to "#{home[:team].market} #{home[:team].name}",
+                  players_team_path(home[:team]),
+                  target: '_blank'
+        %>
       </div>
-    <% end %>
-  </div>
+
+      <div class="stats">
+        <div>Moneyline: <%= away[:stats][:moneyline] %></div>
+        <div>Puck line: <%= away[:stats][:puckline] %></div>
+        <div>Moneyline: <%= home[:stats][:moneyline] %></div>
+        <div>Puck line: <%= home[:stats][:puckline] %></div>
+      </div>
+
+      <div>
+        <span>
+          Over <%= data[:totals][:over] %> / Under <sp%= data[:totals][:under] %>
+        </span>
+        <span>Puck drop: <%= data[:scheduled].strftime('%I:%M %p') %></span>
+      </div>
+    </div>
+  <% end %>
 </div>
