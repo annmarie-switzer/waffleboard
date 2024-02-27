@@ -1,42 +1,63 @@
-<div class="page">
-  <h1>Today's Games</h1>
-
-  <h4>Number of games: <%= @games.length %></h4>
-
+<div class="table">
+  <div class="row header">
+    <div class="cell"></div>
+    <div class="cell">Moneyline</div>
+    <div class="cell">Puck line</div>
+    <div class="cell">Total</div>
+  </div>
   <% @games.each do |id, data| %>
     <% away = data[:away] %>
     <% home = data[:home] %>
+    <div class="row-group">
+      <div class="row">
+        <a
+          class="cell"
+          href="<%= players_team_path(away[:team]) %>"
+          target="_blank"
+        >
+          <img src="<%= away[:team].logo %>" />
+          <%= "#{away[:team].market} #{away[:team].name}" %>
+        </a>
 
-    <div class="game-row">
-      <div class="matchup">
-        <img src="<%= away[:team].logo %>" />
-        <%=
-          link_to "#{away[:team].market} #{away[:team].name}",
-                  players_team_path(away[:team]),
-                  target: '_blank'
-        %>
-        <span>@</span>
-        <img src="<%= home[:team].logo %>" />
-        <%=
-          link_to "#{home[:team].market} #{home[:team].name}",
-                  players_team_path(home[:team]),
-                  target: '_blank'
-        %>
+        <div class="cell">
+          <span>
+            <%= away[:stats][:moneyline] %>
+          </span>
+        </div>
+        <div class="cell">
+          <span>
+            <%= away[:stats][:puckline] %>
+          </span>
+        </div>
+        <div class="cell">
+          <span> O <%= data[:totals][:over] %> </span>
+        </div>
       </div>
-
-      <div class="stats">
-        <div>Moneyline: <%= away[:stats][:moneyline] %></div>
-        <div>Puck line: <%= away[:stats][:puckline] %></div>
-        <div>Moneyline: <%= home[:stats][:moneyline] %></div>
-        <div>Puck line: <%= home[:stats][:puckline] %></div>
-      </div>
-
-      <div>
-        <span>
-          Over <%= data[:totals][:over] %> / Under <sp%= data[:totals][:under] %>
-        </span>
-        <span>Puck drop: <%= data[:scheduled].strftime('%I:%M %p') %></span>
+      <div class="row">
+        <a
+          class="cell"
+          href="<%= players_team_path(home[:team]) %>"
+          target="_blank"
+        >
+          <img src="<%= home[:team].logo %>" />
+          <%= "#{home[:team].market} #{home[:team].name}" %>
+        </a>
+        <div class="cell">
+          <span>
+            <%= home[:stats][:moneyline] %>
+          </span>
+        </div>
+        <div class="cell">
+          <span>
+            <%= home[:stats][:puckline] %>
+          </span>
+        </div>
+        <div class="cell">
+          <span> U <%= data[:totals][:under] %> </span>
+        </div>
       </div>
     </div>
   <% end %>
 </div>
+
+<%# data[:scheduled].strftime('%I:%M %p') %>

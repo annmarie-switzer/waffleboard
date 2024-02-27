@@ -22,6 +22,9 @@ body {
   color: var(--fg);
   background-color: var(--bg);
   font-size: 1rem;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
 
 h1,
@@ -32,23 +35,59 @@ p {
   padding: 0;
 }
 
-.page {
+a {
+  color: var(--fg);
+}
+
+.table {
+  width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.row-group {
+  border: solid blue;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  height: 50px;
   padding: 0 16px;
 }
 
-.game-row {
-  display: flex;
-  flex-direction: column;
-  padding: 16px;
-  border: solid orange;
+.row.header {
+  height: 25px;
 }
 
-.matchup, .stats {
+.cell {
   display: flex;
-  gap: 8px;
   align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  border: solid green;
 }
 
-.matchup img {
-  height: 40px;
+.cell:first-child {
+  flex: 2;
+  justify-content: flex-start;
+  gap: 8px;
+}
+
+.cell img {
+  height: 50px;
+  aspect-ratio: 1;
+}
+
+.cell span {
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
+}
+
+.cell span:hover {
+  background-color: var(--grey5);
+  padding: 6px 12px;
+  border-radius: 6px;
 }
