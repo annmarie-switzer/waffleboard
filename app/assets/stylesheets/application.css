@@ -3,16 +3,18 @@
 
 body[data-theme='dark'] {
   --bg: var(--grey8);
-  --bg-contrast: var(--grey7);
-  --fg: var(--grey0);
-  --fg-muted: var(--grey3);
+  --bg-contrast: var(--grey6);
+  --fg: var(--grey1);
+  --fg-bright: var(--white);
+  --fg-muted: var(--grey1);
 }
 
 body[data-theme='light'] {
   --bg: var(--grey0);
-  --bg-contrast: var(--grey1);
-  --fg: var(--black);
-  --fg-muted: var(--grey3);
+  --bg-contrast: var(--grey2);
+  --fg: var(--grey7);
+  --fg-bright: var(--black);
+  --fg-muted: var(--grey5);
 }
 
 body {
@@ -39,6 +41,21 @@ a {
   color: var(--fg);
 }
 
+a:hover {
+  color: var(--fg-bright);
+}
+
+button {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
 .table {
   width: 800px;
   display: flex;
@@ -47,17 +64,18 @@ a {
 }
 
 .row-group {
-  border: solid blue;
+  display: flex;
+  flex-direction: column;
 }
 
-.row {
+.row,
+.header {
   display: flex;
   align-items: center;
-  height: 50px;
-  padding: 0 16px;
+  border-bottom: solid 1.5px var(--bg-contrast);
 }
 
-.row.header {
+.header {
   height: 25px;
 }
 
@@ -67,27 +85,43 @@ a {
   justify-content: center;
   flex: 1;
   height: 100%;
-  border: solid green;
 }
 
 .cell:first-child {
   flex: 2;
   justify-content: flex-start;
   gap: 8px;
+  text-decoration: none;
 }
 
 .cell img {
-  height: 50px;
+  height: 40px;
   aspect-ratio: 1;
 }
 
-.cell span {
-  font-variant-numeric: tabular-nums;
-  cursor: pointer;
+.cell a:not(:hover):not(:active) {
+  text-decoration: none;
 }
 
-.cell span:hover {
-  background-color: var(--grey5);
-  padding: 6px 12px;
+.cell .at {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+}
+
+.row .cell:not(:first-child) {
+  font-variant-numeric: tabular-nums;
+  cursor: pointer;
   border-radius: 6px;
+  border: solid 2px transparent;
+}
+
+.row .cell:not(:first-child):hover {
+  color: var(--fg-bright);
+  border-color: var(--blue5);
+}
+
+.header .cell {
+  font-size: 0.75rem;
+  color: var(--fg-muted);
+  text-transform: uppercase;
 }

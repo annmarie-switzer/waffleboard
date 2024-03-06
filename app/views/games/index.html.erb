@@ -1,5 +1,5 @@
 <div class="table">
-  <div class="row header">
+  <div class="header">
     <div class="cell"></div>
     <div class="cell">Moneyline</div>
     <div class="cell">Puck line</div>
@@ -10,54 +10,46 @@
     <% home = data[:home] %>
     <div class="row-group">
       <div class="row">
-        <a
-          class="cell"
-          href="<%= players_team_path(away[:team]) %>"
-          target="_blank"
-        >
+        <div class="cell">
           <img src="<%= away[:team].logo %>" />
-          <%= "#{away[:team].market} #{away[:team].name}" %>
-        </a>
-
-        <div class="cell">
-          <span>
-            <%= away[:stats][:moneyline] %>
-          </span>
+          <a href="<%= players_team_path(away[:team]) %>" target="_blank">
+            <%= "#{away[:team].market} #{away[:team].name}" %>
+          </a>
+          <span class="at">@</span>
         </div>
         <div class="cell">
-          <span>
+          <%= away[:stats][:moneyline] %>
+        </div>
+        <div class="cell">
+          <button>
             <%= away[:stats][:puckline] %>
-          </span>
+          </button>
         </div>
         <div class="cell">
-          <span> O <%= data[:totals][:over] %> </span>
+          <button> O <%= data[:totals][:over] %> </button>
         </div>
       </div>
       <div class="row">
-        <a
-          class="cell"
-          href="<%= players_team_path(home[:team]) %>"
-          target="_blank"
-        >
+        <div class="cell">
           <img src="<%= home[:team].logo %>" />
-          <%= "#{home[:team].market} #{home[:team].name}" %>
-        </a>
+          <a href="<%= players_team_path(home[:team]) %>" target="_blank">
+            <%= "#{home[:team].market} #{home[:team].name}" %>
+          </a>
+        </div>
         <div class="cell">
-          <span>
+          <button>
             <%= home[:stats][:moneyline] %>
-          </span>
+          </butt>
         </div>
         <div class="cell">
-          <span>
+          <button>
             <%= home[:stats][:puckline] %>
-          </span>
+          </button>
         </div>
         <div class="cell">
-          <span> U <%= data[:totals][:under] %> </span>
+          <button> U <%= data[:totals][:under] %> </button>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-
-<%# data[:scheduled].strftime('%I:%M %p') %>
