@@ -1,6 +1,8 @@
 @import url('palette.css');
 @import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
 
+@import 'components/*';
+
 body[data-theme='dark'] {
   --bg: var(--grey8);
   --bg-contrast: var(--grey6);
