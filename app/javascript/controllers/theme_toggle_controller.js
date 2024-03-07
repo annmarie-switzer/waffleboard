@@ -16,7 +16,7 @@ export default class extends Controller {
     localStorage.setItem('theme', this.themeValue);
   }
 
-  themeValueChanged(curr, prev) {
+  themeValueChanged(curr) {
     document.body.setAttribute('data-theme', curr);
 
     this.iconTarget.src =
